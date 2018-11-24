@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/editMemberViewText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <EditText
+            android:id="@+id/editMemberNo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="メンバ番号"
+            android:inputType="textPersonName" />
+
+        <EditText
+            android:id="@+id/editMemberName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="メンバ名称"
+            android:inputType="textPersonName" />
+
+        <Button
+            android:id="@+id/editMemberOk"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="編集" />
+
+        <CheckBox
+            android:id="@+id/editModeCheckBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:checked="false"
+            android:text="メンバを選択して名前を修正する" />
+
+        <Spinner
+            android:id="@+id/selMemSpinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+</LinearLayout>
