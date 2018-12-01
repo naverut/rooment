@@ -3,7 +3,7 @@ package naverut.rooment.bean;
 import naverut.rooment.entity.Member;
 
 /**
- * Spinnerに載せるクラス
+ * メンバ情報をSpinnerに載せるクラス
  */
 public class MemberOnSpinner {
     private final Member member;

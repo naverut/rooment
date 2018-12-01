@@ -25,9 +25,10 @@ public class RecordService {
     /**
      * 打刻履歴文字を取得する
      * @param context android用context
+     * @param fileName 読み込む打刻履歴ファイル名
      * @return 打刻履歴文字
      */
-    public static String getRecordString(Context context) {
+    public static String getRecordString(Context context, String fileName) {
         // メンバ番号とメンバ名称を保持しておく
         MemberDao memberDao = new MemberDao(context);
         List<Member> memberList = memberDao.selectAll();
@@ -37,7 +38,7 @@ public class RecordService {
         }
 
         // 打刻履歴を取得
-        RecordDao recordDao = new RecordDao(context);
+        RecordDao recordDao = new RecordDao(context, fileName);
         List<Record> recordList = recordDao.selectAll();
 
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss", Locale.JAPAN);

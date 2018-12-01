@@ -7,11 +7,10 @@ import naverut.rooment.entity.Password;
 
 /**
  * パスワード用DAO
- * @auther naverut
  */
 public final class PasswordDao extends AbstractInfileDao<Password> {
     // ファイル名
-    public static String fileName = "password.txt";
+    public static final String fileName = "password.txt";
 
     /**
      * コンストラクタ

@@ -5,16 +5,17 @@ import android.content.Context;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.PrintWriter;
+import java.nio.channels.FileChannel;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * ファイル系Util
- * @auther Naverut
  */
 public class InFileUtil {
     // デフォルトコンストラクタ禁止
@@ -98,5 +99,34 @@ public class InFileUtil {
             writer.write(str);
             writer.flush();
         }
+    }
+
+    /**
+     * ファイルをコピーする。コピー先が存在する場合は上書きする
+     * @param context android用context
+     * @param orgFileName コピー元ファイル名
+     * @param dstFileName コピー先ファイル名
+     * @return コピー成功
+     * @throws IOException ファイルエラー
+     */
+    public static boolean copy(Context context, String orgFileName, String dstFileName) throws IOException {
+        // ファイル存在チェック
+        if (!exists(context, orgFileName)) {
+            return false;
+        }
+
+        // ファイルコピー
+        try (
+            FileInputStream fio = context.openFileInput(orgFileName);
+            OutputStream fos = context.openFileOutput(dstFileName, Context.MODE_PRIVATE);
+        ) {
+            FileChannel inChannel = fio.getChannel();
+            FileChannel outChannel = ((FileOutputStream) fos).getChannel();
+            long pos = 0;
+            while (pos < inChannel.size()) {
+                pos += inChannel.transferTo(pos, inChannel.size(), outChannel);
+            }
+        }
+        return true;
     }
 }

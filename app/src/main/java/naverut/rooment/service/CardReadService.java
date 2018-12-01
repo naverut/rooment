@@ -43,7 +43,7 @@ public class CardReadService {
                 .cardId(card.getCardId())
                 .build()
                 ;
-        RecordDao recordDao = new RecordDao(context);
+        RecordDao recordDao = new RecordDao(context, RecordDao.fileName);
         recordDao.insert(record);
 
         // 切り替えたステータスを上書き

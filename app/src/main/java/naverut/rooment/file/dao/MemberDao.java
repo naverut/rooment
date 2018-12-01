@@ -9,11 +9,10 @@ import naverut.rooment.entity.Member;
 
 /**
  * メンバ用DAO
- * @author naverut
  */
 public final class MemberDao extends AbstractInfileDao<Member> {
     // ファイル名
-    public static String fileName = "member.txt";
+    public static final String fileName = "member.txt";
 
     /**
      * コンストラクタ

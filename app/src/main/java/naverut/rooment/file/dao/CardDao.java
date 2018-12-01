@@ -9,11 +9,10 @@ import naverut.rooment.entity.Card;
 
 /**
  * カード用DAO
- * @auther naverut
  */
 public final class CardDao extends AbstractInfileDao<Card> {
     // ファイル名
-    public static String fileName = "card.txt";
+    public static final String fileName = "card.txt";
 
     /**
      * コンストラクタ

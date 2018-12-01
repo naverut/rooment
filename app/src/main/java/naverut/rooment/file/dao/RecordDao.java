@@ -12,23 +12,25 @@ import naverut.rooment.enums.Status;
 
 /**
  * カード読み込み時刻用DAO
- * @naverut
  */
-public final class RecordDao extends AbstractInfileDao<Record> {
+public class RecordDao extends AbstractInfileDao<Record> {
     // ファイル名
-    public static String fileName = "record.txt";
+    public static final String fileName = "record.txt";
 
+    // 打刻ファイル名
+    private final String recordFileName;
     /**
      * コンストラクタ
      * @param context android用context
      */
-    public RecordDao(Context context) {
+    public RecordDao(Context context, String recordFileName) {
         super(context);
+        this.recordFileName = recordFileName;
     }
 
     @Override
-    protected final String getFileName() {
-        return fileName;
+    protected String getFileName() {
+        return recordFileName;
     }
 
 
