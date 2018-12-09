@@ -10,12 +10,14 @@ import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.text.method.ScrollingMovementMethod;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -43,9 +45,9 @@ public class RecordCheckActivity extends Activity {
         final String recordStr = RecordService.getRecordString(getApplicationContext(), RecordDao.fileName);
 
         // 打刻履歴を表示
-        EditText recordCheckText = findViewById(R.id.recordText);
+        TextView recordCheckText = findViewById(R.id.recordText);
         recordCheckText.setText(recordStr);
-        recordCheckText.setEnabled(false);
+        recordCheckText.setMovementMethod(ScrollingMovementMethod.getInstance());
 
         // 打刻履歴リスト読み込み
         RecordHistoryDao recordHistoryDao = new RecordHistoryDao(context);
@@ -86,7 +88,7 @@ public class RecordCheckActivity extends Activity {
 
                 // 選択した要素で履歴を表示
                 String historyRecordStr = RecordService.getRecordString(context, selectedItem.getRecordHistory().getHistoryFileName());
-                EditText recordCheckText = findViewById(R.id.recordText);
+                TextView recordCheckText = findViewById(R.id.recordText);
                 recordCheckText.setText(historyRecordStr);
 
                 // 先頭以外はバックアップボタンをdisable
@@ -114,7 +116,7 @@ public class RecordCheckActivity extends Activity {
                 // クリップボードへ打刻をコピー
 
                 // クリップボードに格納するItemを作成
-                EditText recordCheckText = findViewById(R.id.recordText);
+                TextView recordCheckText = findViewById(R.id.recordText);
                 String recordStr = recordCheckText.getText().toString();
                 ClipData.Item item = new ClipData.Item(recordStr);
 
